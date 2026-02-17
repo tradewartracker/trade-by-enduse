@@ -2,20 +2,6 @@
 
 This project organizes U.S. import trade data by end-use category using the United Nations **Classification by Broad Economic Categories (BEC)** framework.
 
-## What this notebook does
-
-The notebook `make-end-use-files.ipynb` creates `data/hs6-enduse.parquet`, an HS6-level mapping from product codes to end-use classes used throughout the analysis.
-
-After loading total trade data (`TOTAldata-current.parquet`), the notebook:
-
-- builds HS code hierarchy fields (`HS2`, `HS4`, `HS6`, `HS8`, `HS10`),
-- merges trade records with the HS6-to-end-use mapping,
-- reports yearly shares of:
-	- capital goods,
-	- intermediate goods,
-	- consumption goods,
-	- missing/unmapped trade.
-
 ## About the UN BEC classification
 
 The UN BEC (Classification by Broad Economic Categories) is designed to convert Harmonized System (HS) product codes into economic use categories aligned with national accounts concepts. BEC Revision 5 provides 19 detailed categories that roll up into three main end-use groups:
@@ -26,7 +12,9 @@ The UN BEC (Classification by Broad Economic Categories) is designed to convert 
 
 This project uses a simplified 3-category version. The HS-to-BEC concordance file (`HS2012-17-BEC5 -- 08 Nov 2018.xlsx`) contains some dual-classified products (e.g., `INT/CONS`). These are resolved by taking the first category listed, which is a simplification. Out of 5,387 HS6 codes, only 2 remain unmapped (classified as OTHER).
 
-## Analysis and visualization: `end-use-breakdown.ipynb`
+## Analysis and visualization: `make-end-use-files.ipynb` and `end-use-breakdown.ipynb`
+
+The notebook `make-end-use-files.ipynb` creates `data/hs6-enduse.parquet`, an HS6-level mapping from product codes to end-use classes used throughout the analysis.
 
 The main analysis notebook (`end-use-breakdown.ipynb`) performs time-series analysis and visualization of U.S. import trends by end-use category.
 
