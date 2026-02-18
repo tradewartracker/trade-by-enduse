@@ -45,6 +45,32 @@ The main analysis notebook (`end-use-breakdown.ipynb`) performs time-series anal
 
 ## Output files
 
-- `data/hs6-enduse.parquet`: cleaned HS6-to-BEC end-use mapping (from `make-end-use-files.ipynb`)
-- `data-output/*.csv`: time-series exports at quarterly and monthly frequency (from `end-use-breakdown.ipynb`)
+### Mapping file
+- [data/hs6-enduse.parquet](data/hs6-enduse.parquet): HS6-to-BEC end-use mapping (5,387 HS6 codes classified into CAP, INT, CONS, or OTHER)
+
+### U.S. aggregate imports (all end-use categories combined)
+- [data-output/us_imports_quarterly.csv](data-output/us_imports_quarterly.csv): Quarterly aggregate U.S. imports and tariff rates (excludes incomplete last quarter)
+- [data-output/us_imports_monthly.csv](data-output/us_imports_monthly.csv): Monthly aggregate U.S. imports and tariff rates
+
+### Consumption goods imports
+- [data-output/consumption_goods_quarterly.csv](data-output/consumption_goods_quarterly.csv): Quarterly consumption goods imports and tariff rates
+- [data-output/consumption_goods_monthly.csv](data-output/consumption_goods_monthly.csv): Monthly consumption goods imports and tariff rates
+
+### Capital goods imports
+- [data-output/capital_goods_quarterly.csv](data-output/capital_goods_quarterly.csv): Quarterly capital goods imports and tariff rates
+- [data-output/capital_goods_monthly.csv](data-output/capital_goods_monthly.csv): Monthly capital goods imports and tariff rates
+
+### Intermediate goods imports
+- [data-output/intermediate_goods_quarterly.csv](data-output/intermediate_goods_quarterly.csv): Quarterly intermediate goods imports and tariff rates
+- [data-output/intermediate_goods_monthly.csv](data-output/intermediate_goods_monthly.csv): Monthly intermediate goods imports and tariff rates
+
+### AI-relevant products (capital goods only)
+- [data-output/ai_capital_goods_quarterly.csv](data-output/ai_capital_goods_quarterly.csv): Quarterly capital goods split by AI-relevant and not-AI-relevant import values
+- [data-output/ai_capital_goods_monthly.csv](data-output/ai_capital_goods_monthly.csv): Monthly capital goods split by AI-relevant and not-AI-relevant import values
+
+### AI-relevant products (all non-excluded trade)
+- [data-output/ai_nonexcluded_quarterly.csv](data-output/ai_nonexcluded_quarterly.csv): Quarterly all non-excluded imports split by AI-relevant and not-AI-relevant import values
+- [data-output/ai_nonexcluded_monthly.csv](data-output/ai_nonexcluded_monthly.csv): Monthly all non-excluded imports split by AI-relevant and not-AI-relevant import values
+
+**Note:** All CSV files include a `time` column. End-use category files contain `CON_VAL_MO` (import value) and `tariff` (effective tariff rate). AI files contain `ai_relevant_CON_VAL_MO` and `not_ai_relevant_CON_VAL_MO` columns.
 
