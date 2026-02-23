@@ -1,5 +1,7 @@
 # trade-by-enduse
 
+**Most Recent Data: December 2025**
+
 This project organizes U.S. import trade data by end-use category using the United Nations **Classification by Broad Economic Categories (BEC)** framework.
 
 ## About the UN BEC classification
@@ -20,7 +22,7 @@ The main analysis notebook (`end-use-breakdown.ipynb`) performs time-series anal
 
 ### What it produces
 
-**Time-series charts** (quarterly data with November 2025 monthly overlay):
+**Time-series charts** (through Q4 2025):
 - U.S. aggregate imports and tariff rates
 - Consumption goods imports and tariff rates
 - Capital goods imports and tariff rates
@@ -29,11 +31,11 @@ The main analysis notebook (`end-use-breakdown.ipynb`) performs time-series anal
 - AI-relevant products across all non-excluded trade
 
 **Comparison bar charts:**
-- End-use tariff rates: November 2024 vs. November 2025
-- AI-relevant product tariffs: November 2024 vs. November 2025
+- End-use tariff rates: 2024 average vs. November 2025
+- AI-relevant product tariffs: 2024 average vs. November 2025
 
 **Data exports** (`data-output/` folder):
-- Quarterly series (excluding incomplete last quarter) and full monthly series for each time-series visualization
+- Quarterly and monthly series for each time-series visualization (data complete through Q4 2025)
 - Exports include import levels (`CON_VAL_MO`) and tariff rates
 - For AI charts, exports include separate columns for AI-relevant and not-AI-relevant import values
 
@@ -49,7 +51,7 @@ The main analysis notebook (`end-use-breakdown.ipynb`) performs time-series anal
 - [data/hs6-enduse.parquet](data/hs6-enduse.parquet): HS6-to-BEC end-use mapping (5,387 HS6 codes classified into CAP, INT, CONS, or OTHER)
 
 ### U.S. aggregate imports (all end-use categories combined)
-- [data-output/us_imports_quarterly.csv](data-output/us_imports_quarterly.csv): Quarterly aggregate U.S. imports and tariff rates (excludes incomplete last quarter)
+- [data-output/us_imports_quarterly.csv](data-output/us_imports_quarterly.csv): Quarterly aggregate U.S. imports and tariff rates (through Q4 2025)
 - [data-output/us_imports_monthly.csv](data-output/us_imports_monthly.csv): Monthly aggregate U.S. imports and tariff rates
 
 ### Consumption goods imports
