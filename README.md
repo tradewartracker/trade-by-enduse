@@ -1,7 +1,5 @@
 # trade-by-enduse
 
-**Most Recent Data: December 2025**
-
 This project organizes U.S. import trade data by end-use category using the United Nations **Classification by Broad Economic Categories (BEC)** framework.
 
 ## About the UN BEC classification
@@ -14,6 +12,8 @@ The UN BEC (Classification by Broad Economic Categories) is designed to convert 
 
 This project uses a simplified 3-category version. The HS-to-BEC concordance file (`HS2012-17-BEC5 -- 08 Nov 2018.xlsx`) contains some dual-classified products (e.g., `INT/CONS`). These are resolved by taking the first category listed, which is a simplification. Out of 5,387 HS6 codes, only 2 remain unmapped (classified as OTHER).
 
+In looking at the dual case products items like `CAP/CONS` have a lot of computer hardware components. `INT/CONS` has a lot of medical diagnostic tests. Items like `CONS/INT` have fuel products or medical items and `CONS/CAP` is largely cars. 
+
 ## Analysis and visualization: `make-end-use-files.ipynb` and `end-use-breakdown.ipynb`
 
 The notebook `make-end-use-files.ipynb` creates `data/hs6-enduse.parquet`, an HS6-level mapping from product codes to end-use classes used throughout the analysis.
@@ -22,7 +22,7 @@ The main analysis notebook (`end-use-breakdown.ipynb`) performs time-series anal
 
 ### What it produces
 
-**Time-series charts** (through Q4 2025):
+**Time-series charts:**
 - U.S. aggregate imports and tariff rates
 - Consumption goods imports and tariff rates
 - Capital goods imports and tariff rates
@@ -30,14 +30,13 @@ The main analysis notebook (`end-use-breakdown.ipynb`) performs time-series anal
 - AI-relevant capital goods (split by AI-relevant vs. not AI-relevant)
 - AI-relevant products across all non-excluded trade
 
-**Comparison bar charts:**
-- End-use tariff rates: 2024 average vs. November 2025
-- AI-relevant product tariffs: 2024 average vs. November 2025
+**Incomplete quarter handling:** The notebook handles partial quarters (e.g., when only January data is available for Q1). Complete quarters are plotted as connected lines. Incomplete quarters are shown as labeled dots, scaled to their quarterly equivalent (e.g., 1 month × 3). This allows charts to remain meaningful even when run mid-quarter.
 
 **Data exports** (`data-output/` folder):
-- Quarterly and monthly series for each time-series visualization (data complete through Q4 2025)
+- Quarterly and monthly series for each time-series visualization
 - Exports include import levels (`CON_VAL_MO`) and tariff rates
-- For AI charts, exports include separate columns for AI-relevant and not-AI-relevant import values
+- Quarterly exports include a `months_in_quarter` column (1, 2, or 3) to identify incomplete quarters
+- For AI charts, exports include separate columns for AI-relevant and not-AI-relevant import values and tariff rates
 
 ### Key configuration
 
@@ -67,12 +66,12 @@ The main analysis notebook (`end-use-breakdown.ipynb`) performs time-series anal
 - [data-output/intermediate_goods_monthly.csv](data-output/intermediate_goods_monthly.csv): Monthly intermediate goods imports and tariff rates
 
 ### AI-relevant products (capital goods only)
-- [data-output/ai_capital_goods_quarterly.csv](data-output/ai_capital_goods_quarterly.csv): Quarterly capital goods split by AI-relevant and not-AI-relevant import values
-- [data-output/ai_capital_goods_monthly.csv](data-output/ai_capital_goods_monthly.csv): Monthly capital goods split by AI-relevant and not-AI-relevant import values
+- [data-output/ai_capital_goods_quarterly.csv](data-output/ai_capital_goods_quarterly.csv): Quarterly capital goods split by AI-relevant and not-AI-relevant import values and tariff rates
+- [data-output/ai_capital_goods_monthly.csv](data-output/ai_capital_goods_monthly.csv): Monthly capital goods split by AI-relevant and not-AI-relevant import values and tariff rates
 
 ### AI-relevant products (all non-excluded trade)
-- [data-output/ai_nonexcluded_quarterly.csv](data-output/ai_nonexcluded_quarterly.csv): Quarterly all non-excluded imports split by AI-relevant and not-AI-relevant import values
-- [data-output/ai_nonexcluded_monthly.csv](data-output/ai_nonexcluded_monthly.csv): Monthly all non-excluded imports split by AI-relevant and not-AI-relevant import values
+- [data-output/ai_nonexcluded_quarterly.csv](data-output/ai_nonexcluded_quarterly.csv): Quarterly all non-excluded imports split by AI-relevant and not-AI-relevant import values and tariff rates
+- [data-output/ai_nonexcluded_monthly.csv](data-output/ai_nonexcluded_monthly.csv): Monthly all non-excluded imports split by AI-relevant and not-AI-relevant import values and tariff rates
 
-**Note:** All CSV files include a `time` column. End-use category files contain `CON_VAL_MO` (import value) and `tariff` (effective tariff rate). AI files contain `ai_relevant_CON_VAL_MO` and `not_ai_relevant_CON_VAL_MO` columns.
+**Note:** All CSV files include a `time` column. End-use category files contain `CON_VAL_MO` (import value) and `tariff` (effective tariff rate). AI files contain `ai_relevant_CON_VAL_MO`, `ai_relevant_tariff`, `not_ai_relevant_CON_VAL_MO`, and `not_ai_relevant_tariff` columns. Quarterly files include `months_in_quarter` to indicate data completeness (3 = full quarter).
 
