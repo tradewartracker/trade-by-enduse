@@ -2,6 +2,8 @@
 
 This project organizes U.S. import trade data by end-use category using the United Nations **Classification by Broad Economic Categories (BEC)** framework.
 
+Most Recent Data **January 2026**
+
 ## About the UN BEC classification
 
 The UN BEC (Classification by Broad Economic Categories) is designed to convert Harmonized System (HS) product codes into economic use categories aligned with national accounts concepts. BEC Revision 5 provides 19 detailed categories that roll up into three main end-use groups:
