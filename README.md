@@ -2,7 +2,7 @@
 
 This project organizes U.S. import trade data by end-use category using the United Nations **Classification by Broad Economic Categories (BEC)** framework.
 
-Most Recent Data **January 2026**
+Most Recent Data **June 2026**
 
 ## About the UN BEC classification
 
@@ -52,7 +52,7 @@ The main analysis notebook (`end-use-breakdown.ipynb`) performs time-series anal
 - [data/hs6-enduse.parquet](data/hs6-enduse.parquet): HS6-to-BEC end-use mapping (5,387 HS6 codes classified into CAP, INT, CONS, or OTHER)
 
 ### U.S. aggregate imports (all end-use categories combined)
-- [data-output/us_imports_quarterly.csv](data-output/us_imports_quarterly.csv): Quarterly aggregate U.S. imports and tariff rates (through Q4 2025)
+- [data-output/us_imports_quarterly.csv](data-output/us_imports_quarterly.csv): Quarterly aggregate U.S. imports and tariff rates (through Q2 2026)
 - [data-output/us_imports_monthly.csv](data-output/us_imports_monthly.csv): Monthly aggregate U.S. imports and tariff rates
 
 ### Consumption goods imports
